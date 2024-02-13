@@ -18,7 +18,7 @@ const ForgotPasswordPage = () => {
     }
   
     try {
-      const response = await fetch('http://127.0.0.1:8000/password_reset/', {
+      const response = await fetch(forgotPasswordUrl, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

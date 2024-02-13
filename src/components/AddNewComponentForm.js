@@ -7,7 +7,7 @@ const AddNewCategoryForm = ({ onCategoryAdded, onClose }) => {
 
   const handleAddCategory = async () => {
     try {
-      const response = await axios.post('http://localhost:8000/api/categories/', {
+      const response = await axios.post('fetchCategoriesUrl', {
         name: newCategoryName
       },
       {

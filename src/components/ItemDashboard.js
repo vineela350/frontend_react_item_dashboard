@@ -44,7 +44,7 @@ const ItemDashboard = () => {
     // Function to fetch items from the backend
     const fetchItems = async () => {
         try {
-            const response = await axios.get('http://localhost:8000/api/items/',
+            const response = await axios.get(fetchItemsUrl,
                 {
                     headers: {
                         'Authorization': `Token ${token}`
@@ -62,7 +62,7 @@ const ItemDashboard = () => {
         const trimmedSearchTerm = searchTerm.trim();
 
         const url = trimmedSearchTerm
-            ? `http://127.0.0.1:8000/api/items/?search=${encodeURIComponent(trimmedSearchTerm)}`
+            ? fetchItemsForSearchUrl+`${encodeURIComponent(trimmedSearchTerm)}`
             : 'http://127.0.0.1:8000/api/items/';
 
         try {
@@ -77,7 +77,7 @@ const ItemDashboard = () => {
                 setTotalItems(response.data.items.length);
             } else {
                 // If searchTerm is empty, fetch all items
-                const response = await axios.get('http://localhost:8000/api/items/', {
+                const response = await axios.get('fetchItemsUrl', {
                     headers: {
                         'Authorization': `Token ${token}`
                     }
@@ -97,7 +97,7 @@ const ItemDashboard = () => {
     const handleDeleteItem = async (itemId) => {
         try {
             // Make the DELETE request to your backend
-            await axios.delete(`http://localhost:8000/api/items/${itemId}`, {
+            await axios.delete(fetchItemsUrl+`${itemId}`, {
                 headers: {
                     'Authorization': `Token ${token}`
                 }
@@ -130,7 +130,7 @@ const ItemDashboard = () => {
         // Function to fetch categories
         const fetchCategories = async () => {
             try {
-                const response = await axios.get('http://localhost:8000/api/categories', {
+                const response = await axios.get('fetchCategoriesUrl', {
                     headers: {
                         'Authorization': `Token ${token}`
                     }
@@ -146,7 +146,7 @@ const ItemDashboard = () => {
 
         const fetchTags = async () => {
             try {
-                const response = await axios.get('http://localhost:8000/api/tags/', {
+                const response = await axios.get(fetchTagsUrl, {
                     headers: {
                         'Authorization': `Token ${token}`
                     }
@@ -161,7 +161,7 @@ const ItemDashboard = () => {
         // Function to fetch items
         const fetchItems = async () => {
             try {
-                const response = await axios.get('http://localhost:8000/api/items/',
+                const response = await axios.get(fetchItemsUrl,
                     {
                         headers: {
                             'Authorization': `Token ${token}`
@@ -241,7 +241,7 @@ const ItemDashboard = () => {
 
             console.log('Sending payload:', payload);
             console.log(token);
-            const response = await axios.post('http://localhost:8000/api/items/', payload, {
+            const response = await axios.post(fetchItemsUrl, payload, {
                 headers: {
                     'Authorization': `Token ${token}`  // Assuming 'token' is defined and holds the value of the auth token
                 }
