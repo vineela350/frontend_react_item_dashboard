@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import Config from '../utils/Config.js';
+
 
 const AddNewCategoryForm = ({ onCategoryAdded, onClose }) => {
   const [newCategoryName, setNewCategoryName] = useState('');
@@ -7,7 +9,7 @@ const AddNewCategoryForm = ({ onCategoryAdded, onClose }) => {
 
   const handleAddCategory = async () => {
     try {
-      const response = await axios.post('fetchCategoriesUrl', {
+      const response = await axios.post(Config.fetchCategoriesUrl, {
         name: newCategoryName
       },
       {

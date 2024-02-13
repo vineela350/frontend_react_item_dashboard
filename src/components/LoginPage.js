@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { FaUserAlt, FaLock, FaSignInAlt } from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom';
+import Config from '../utils/Config.js';
 
 const LoginPage = () => {
     const [username, setUsername] = useState('');
@@ -16,7 +17,7 @@ const LoginPage = () => {
     const handleLogin = async () => {
 
         try {
-            const response = await fetch(loginUrl, {
+            const response = await fetch(Config.loginUrl, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import Config from '../utils/Config.js';
 
 const SortFilter = ({ onSort }) => {
   const [sortMethod, setSortMethod] = useState('');
@@ -9,7 +10,7 @@ const SortFilter = ({ onSort }) => {
     const sortKey = event.target.value;
     setSortMethod(sortKey);
 
-    let url = 'http://127.0.0.1:8000/api/items/';
+    let url = Config.fetchItemsUrl;
     if (sortKey) {
       url += `?ordering=${sortKey}`;
     }

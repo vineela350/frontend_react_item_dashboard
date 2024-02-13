@@ -10,6 +10,7 @@ import SearchBar from './SearchBar';
 import CategoryFilter from './CategoryFilter';
 import SortFilter from './SortFilter';
 import { FaSearch, FaFilter, FaSort } from 'react-icons/fa';
+import Config from '../utils/Config.js';
 
 const ItemDashboard = () => {
     const [categories, setCategories] = useState([]);
@@ -44,7 +45,7 @@ const ItemDashboard = () => {
     // Function to fetch items from the backend
     const fetchItems = async () => {
         try {
-            const response = await axios.get(fetchItemsUrl,
+            const response = await axios.get(Config.fetchItemsUrl,
                 {
                     headers: {
                         'Authorization': `Token ${token}`
@@ -62,8 +63,8 @@ const ItemDashboard = () => {
         const trimmedSearchTerm = searchTerm.trim();
 
         const url = trimmedSearchTerm
-            ? fetchItemsForSearchUrl+`${encodeURIComponent(trimmedSearchTerm)}`
-            : 'http://127.0.0.1:8000/api/items/';
+            ? Config.fetchItemsForSearchUrl+`${encodeURIComponent(trimmedSearchTerm)}`
+            : Config.fetchItemsUrl;
 
         try {
             // If searchTerm is not empty, fetch filtered items
@@ -77,7 +78,7 @@ const ItemDashboard = () => {
                 setTotalItems(response.data.items.length);
             } else {
                 // If searchTerm is empty, fetch all items
-                const response = await axios.get('fetchItemsUrl', {
+                const response = await axios.get(Config.fetchItemsUrl, {
                     headers: {
                         'Authorization': `Token ${token}`
                     }
@@ -97,7 +98,7 @@ const ItemDashboard = () => {
     const handleDeleteItem = async (itemId) => {
         try {
             // Make the DELETE request to your backend
-            await axios.delete(fetchItemsUrl+`${itemId}`, {
+            await axios.delete(Config.fetchItemsUrl+`${itemId}`, {
                 headers: {
                     'Authorization': `Token ${token}`
                 }
@@ -130,7 +131,7 @@ const ItemDashboard = () => {
         // Function to fetch categories
         const fetchCategories = async () => {
             try {
-                const response = await axios.get('fetchCategoriesUrl', {
+                const response = await axios.get(Config.fetchCategoriesUrl, {
                     headers: {
                         'Authorization': `Token ${token}`
                     }
@@ -146,7 +147,7 @@ const ItemDashboard = () => {
 
         const fetchTags = async () => {
             try {
-                const response = await axios.get(fetchTagsUrl, {
+                const response = await axios.get(Config.fetchTagsUrl, {
                     headers: {
                         'Authorization': `Token ${token}`
                     }
@@ -161,7 +162,7 @@ const ItemDashboard = () => {
         // Function to fetch items
         const fetchItems = async () => {
             try {
-                const response = await axios.get(fetchItemsUrl,
+                const response = await axios.get(Config.fetchItemsUrl,
                     {
                         headers: {
                             'Authorization': `Token ${token}`
@@ -177,7 +178,7 @@ const ItemDashboard = () => {
         };
 
         if (searchTerm) {
-            axios.get(`http://127.0.0.1:8000/api/items/?search=${searchTerm}`,
+            axios.get(Config.fetchItemsForSearchUrl+`${searchTerm}`,
                 {
                     headers: {
                         'Authorization': `Token ${token}`
@@ -199,8 +200,6 @@ const ItemDashboard = () => {
 
     const handleAddNewCategory = async (newCategory) => {
         try {
-            // Your existing logic to post the new category to the backend
-            // ...
 
             // After a successful post, update the categories state
             setCategories(prevCategories => [...prevCategories, newCategory]);
@@ -241,7 +240,7 @@ const ItemDashboard = () => {
 
             console.log('Sending payload:', payload);
             console.log(token);
-            const response = await axios.post(fetchItemsUrl, payload, {
+            const response = await axios.post(Config.fetchItemsUrl, payload, {
                 headers: {
                     'Authorization': `Token ${token}`  // Assuming 'token' is defined and holds the value of the auth token
                 }

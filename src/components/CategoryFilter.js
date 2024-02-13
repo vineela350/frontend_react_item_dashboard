@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import Config from '../utils/Config.js';
 
 const CategoryFilter = ({ onFilter, categories }) => {
     const [selectedCategory, setSelectedCategory] = useState('');
@@ -11,7 +12,7 @@ const CategoryFilter = ({ onFilter, categories }) => {
 
        
             try {
-                const response = await axios.get(getItemsByCategoryUrl+`{category}`,
+                const response = await axios.get(Config.getItemsByCategoryUrl+`{category}`,
                 {
                     headers: {
                         'Authorization': `Token ${token}` 

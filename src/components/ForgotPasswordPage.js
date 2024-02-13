@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { FaUserAlt, FaLock } from 'react-icons/fa';
+import Config from '../utils/Config.js';
+
 
 const ForgotPasswordPage = () => {
   const [email, setEmail] = useState('');
@@ -18,7 +20,7 @@ const ForgotPasswordPage = () => {
     }
   
     try {
-      const response = await fetch(forgotPasswordUrl, {
+      const response = await fetch(Config.forgotPasswordUrl, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

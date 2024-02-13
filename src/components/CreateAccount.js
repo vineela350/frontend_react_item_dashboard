@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { FaUserAlt, FaLock, FaSignInAlt } from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom'; 
+import Config from '../utils/Config.js';
 
 const CreateAccount = () => {
   const [email, setEmail] = useState('');
@@ -17,7 +18,7 @@ const CreateAccount = () => {
     event.preventDefault();
     try {
       // Replace with your actual register API endpoint
-      const response = await fetch(createUserUrl, {
+      const response = await fetch(Config.createUserUrl, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
