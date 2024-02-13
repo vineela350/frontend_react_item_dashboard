@@ -1,24 +1,35 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react';
+import './index.css';
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+import LoginPage from './components/LoginPage'; // Assuming you have created LoginPage
+import ItemDashboard from './components/ItemDashboard';
+import CreateAccount from './components/CreateAccount';
+import ForgotPasswordPage from './components/ForgotPasswordPage';
+
 
 function App() {
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const token = localStorage.getItem('token');
+
+  const handleLogin = (credentials) => {
+    // TODO: implement login logic and set isLoggedIn to true if successful
+    setIsLoggedIn(true);
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+      <div className="App">
+        <main>
+          <Routes>
+          <Route path="/create-account" element={<CreateAccount />} />
+          <Route path="/forgot-password" element={<ForgotPasswordPage />} />
+          <Route path="/" element={<LoginPage />} />
+          <Route path="/login" element={<LoginPage />} />
+          <Route path="/dashboard" element={token ? <ItemDashboard /> : <Navigate to="/login" />} />
+          </Routes>
+        </main>
+      </div>
+    </BrowserRouter>
   );
 }
 

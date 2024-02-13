@@ -1,0 +1,75 @@
+/* Header.css */
+.flex {
+    display: flex;
+  }
+  
+  .h-screen {
+    height: 100vh;
+  }
+  
+  .bg-gray-800 {
+    background-color: #2d3748; /* Adjust the color to match your theme */
+  }
+  
+  .w-64 {
+    width: 16rem; /* Adjust the width as necessary */
+  }
+  
+  .flex-col {
+    flex-direction: column;
+  }
+  
+  .flex-grow {
+    flex-grow: 1;
+  }
+  
+  .pt-5 {
+    padding-top: 1.25rem;
+  }
+  
+  .overflow-y-auto {
+    overflow-y: auto;
+  }
+  
+  .items-center {
+    align-items: center;
+  }
+  
+  .flex-shrink-0 {
+    flex-shrink: 0;
+  }
+  
+  .px-4 {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+  
+  .space-y-2 > * + * {
+    margin-top: 0.5rem; /* Adds vertical space between nav items */
+  }
+  
+  .text-white {
+    color: white;
+  }
+  
+  .text-lg {
+    font-size: 1.125rem;
+  }
+  
+  .font-medium {
+    font-weight: 500;
+  }
+  
+  .nav-link {
+    display: block;
+    color: #a0aec0; /* Lighter grey for nav items */
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    border-radius: 0.375rem;
+  }
+  
+  .nav-link:hover, .nav-link.active {
+    background-color: #4a5568; /* Darker grey background on hover/active */
+    color: white;
+  }
+  
