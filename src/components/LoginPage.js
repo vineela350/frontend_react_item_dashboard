@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { FaUserAlt, FaLock, FaSignInAlt } from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom';
-import Config from '../utils/Config.js';
+import Config from '../utils/Config';
 
 const LoginPage = () => {
     const [username, setUsername] = useState('');

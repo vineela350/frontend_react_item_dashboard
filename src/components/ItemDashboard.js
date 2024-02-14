@@ -10,7 +10,7 @@ import SearchBar from './SearchBar';
 import CategoryFilter from './CategoryFilter';
 import SortFilter from './SortFilter';
 import { FaSearch, FaFilter, FaSort } from 'react-icons/fa';
-import Config from '../utils/Config.js';
+import Config from '../utils/Config';
 
 const ItemDashboard = () => {
     const [categories, setCategories] = useState([]);
