@@ -12,7 +12,7 @@ const CategoryFilter = ({ onFilter, categories }) => {
 
        
             try {
-                const response = await axios.get(Config.getItemsByCategoryUrl+`{category}`,
+                const response = await axios.get(`${Config.getItemsByCategoryUrl}${category}`,
                 {
                     headers: {
                         'Authorization': `Token ${token}` 
